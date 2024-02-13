@@ -1,5 +1,8 @@
+import { useState } from "react";
 
 function LoginPage(){
+
+    let [isRegisterOpened, setIsRegisterOpened] = useState(false)
 
     return(
         <div className="login-page">
@@ -18,11 +21,26 @@ function LoginPage(){
                         <p>or</p>
                         <div className="right-line"></div>
                     </div>
-                    <button>Create account</button>
+                    <button onClick={()=>setIsRegisterOpened(true)}>Create account</button>
                     <h6>Already have an account?</h6>
                     <button>Sign in</button>
                 </div>
             </div>
+            {isRegisterOpened ? 
+            <div className="create-account-popup">
+                <div className="container">
+                    <p onClick={()=>setIsRegisterOpened(false)}>&#10006;</p>
+                    <img src="imgs/logo.svg" alt="logo" className='logo'/>
+                    <div className="inputs-container">
+                        <h3>Create your account</h3>
+                        <input maxLength={30} type="text" name="reg-nick" id="reg-nick" placeholder="Nick"/>
+                        <input type="email" name="reg-email" id="reg-email" placeholder="E-mail"/>
+                        <input type="password" name="reg-pswd" id="reg-pswd" placeholder="Password"/>
+                        <input type="password" name="reg-repswd" id="reg-repswd" placeholder="Repeat password"/>
+                        <button disabled={true} >Next</button>
+                    </div>
+                </div>
+            </div>: null}
         </div>
     )
 }
