@@ -1,3 +1,28 @@
+@import './styles/variables.scss', './styles/cssReset.scss', './styles/loginPage.scss';
+
+html{
+    font-size: 16px;
+}
 body{
     background-color: black;
+    color: white;
+}
+h1{
+    font-family: $roboto;
+    font-weight: 700;
+    font-size: 4.5rem;
+}
+h3{
+    font-family: $roboto;
+    font-weight: 500;
+    font-size: 2.5rem;
+}
+h6{
+    font-family: $roboto;
+    font-weight: 400;
+    font-size: 1.3rem;
+}
+p{
+    font-family: $roboto;
+    font-size: 1rem;
 }
