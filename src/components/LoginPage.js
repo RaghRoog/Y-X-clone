@@ -3,6 +3,7 @@ import { useState } from "react";
 function LoginPage(){
 
     let [isRegisterOpened, setIsRegisterOpened] = useState(false)
+    let [isLoginOpened, setIsLoginOpened] = useState(false)
 
     function registerValidation(){
         let nickInput = document.getElementById("reg-nick")
@@ -69,7 +70,7 @@ function LoginPage(){
                     </div>
                     <button onClick={()=>setIsRegisterOpened(true)}>Create account</button>
                     <h6>Already have an account?</h6>
-                    <button>Sign in</button>
+                    <button onClick={()=>setIsLoginOpened(true)}>Sign in</button>
                 </div>
             </div>
             {isRegisterOpened ? 
@@ -83,10 +84,23 @@ function LoginPage(){
                         <input onChange={registerValidation} type="email" name="reg-email" id="reg-email" placeholder="E-mail"/>
                         <input onChange={registerValidation} type="password" name="reg-pswd" id="reg-pswd" placeholder="Password"/>
                         <input onChange={registerValidation} type="password" name="reg-repswd" id="reg-repswd" placeholder="Repeat password"/>
-                        <button onClick={()=>{console.log(222)}} disabled={true} id="reg-next">Next</button>
+                        <button disabled={true} id="reg-next">Next</button>
                     </div>
                 </div>
             </div>: null}
+            {isLoginOpened ? 
+            <div className="login-popup">
+                <div className="container">
+                    <p onClick={()=>setIsLoginOpened(false)}>&#10006;</p>
+                    <img src="imgs/logo.svg" alt="logo" className='logo'/>
+                    <div className="inputs-container">
+                        <h3>Sign In</h3>
+                        <input type="email" name="log-email" id="log-email" placeholder="E-mail"/>
+                        <input type="password" name="log-pswd" id="log-pswd" placeholder="Password"/>
+                        <button disabled={true} id="login-btn">Sign In</button>
+                    </div>
+                </div>
+            </div> : null}
         </div>
     )
 }
